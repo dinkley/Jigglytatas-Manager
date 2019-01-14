@@ -56,7 +56,7 @@ public class JigglytatasListener implements Listener
         boolean isNight = (world.getTime() >= 12516);
         //Add 1 to total sleeping players, as arrays start counting from 0
         int sleepingPlayers = getSleepingPlayers(event) + 1;
-        int totalPlayers = Bukkit.getOnlinePlayers().size();
+        int totalPlayers = Bukkit.getOnlinePlayers().size() + 3;
         int halfPlayers = totalPlayers / 2;
 
         if (isNight && bedEnterResult == OK)
