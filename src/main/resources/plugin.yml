@@ -1,0 +1,8 @@
+name: JigglytatasManager
+version: ${project.version}
+main: com.dinkley.jigglytatas.JigglytatasManager
+api-version: 1.13
+prefix: Jigglytatas
+load: STARTUP
+authors: [Dinkley]
+description: Manager plugin for the Jigglytatas SMP Server
