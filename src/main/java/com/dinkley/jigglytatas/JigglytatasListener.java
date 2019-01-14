@@ -77,6 +77,7 @@ public class JigglytatasListener implements Listener
         {
             switch (bedEnterResult)
             {
+                //All results of bedEnterResult
                 case NOT_SAFE: sendJigglyMessageToPlayer(player, "It's not safe to sleep!", true);
                 return;
                 case TOO_FAR_AWAY: sendJigglyMessageToPlayer(player, "You're too far away from the bed!", true);
