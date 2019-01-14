@@ -65,7 +65,7 @@ public class JigglytatasListener implements Listener
                     "[Jigglytatas Server] " + ChatColor.RESET + "" + ChatColor.GOLD +
                     player.getDisplayName() + " is sleeping. [" + sleepingPlayers +
                     "/" + totalPlayers + "]");
-            if (sleepingPlayers >= totalPlayers / 2)
+            if (sleepingPlayers >= (totalPlayers / 2))
             {
                 //Inform server that night has been skipped, as threshold has been reached
                 Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.ITALIC +
