@@ -57,16 +57,19 @@ public class JigglytatasListener implements Listener
         //Add 1 to total sleeping players, as arrays start counting from 0
         int sleepingPlayers = getSleepingPlayers(event) + 1;
         int totalPlayers = Bukkit.getOnlinePlayers().size();
+        int halfPlayers = totalPlayers / 2;
 
         if (isNight && bedEnterResult == OK)
         {
+            Bukkit.getLogger().info(player.getName() + " attempted to sleep, it is night and the game accepted the attempt so we are moving on.");
             //Inform server of player sleeping, and their percentage
             Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.ITALIC +
                     "[Jigglytatas Server] " + ChatColor.RESET + "" + ChatColor.GOLD +
                     player.getDisplayName() + " is sleeping. [" + sleepingPlayers +
                     "/" + totalPlayers + "]");
-            if (sleepingPlayers >= (totalPlayers / 2))
+            if (sleepingPlayers >= halfPlayers)
             {
+                Bukkit.getLogger().info("The player threshold has been reached. Sleeping players: " + sleepingPlayers + " Required players: " + halfPlayers);
                 //Inform server that night has been skipped, as threshold has been reached
                 Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.ITALIC +
                         "[Jigglytatas Server] " + ChatColor.RESET + ""  + ChatColor.GOLD +
