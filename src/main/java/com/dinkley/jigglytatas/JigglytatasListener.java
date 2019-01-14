@@ -114,6 +114,7 @@ public class JigglytatasListener implements Listener
         {
             if (player.isSleeping())
             {
+                //Increment sleepingPlayers by one, then move onto the next player
                 sleepingPlayers++;
             }
         }
