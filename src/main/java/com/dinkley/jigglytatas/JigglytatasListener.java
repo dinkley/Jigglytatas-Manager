@@ -33,6 +33,9 @@ public class JigglytatasListener implements Listener
     public void PlayerDeathEvent(PlayerDeathEvent event)
     {
         Player player = event.getEntity().getPlayer();
+
+        //Round down coordinates to the nearest full number, to prevent
+        //Insane decimal values like 103.219237891273897
         Long xPos = Math.round(player.getLocation().getX());
         Long yPos = Math.round(player.getLocation().getY());
         Long zPos = Math.round(player.getLocation().getZ());
