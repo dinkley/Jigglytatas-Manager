@@ -68,7 +68,7 @@ public class JigglytatasListener implements Listener
             {
 
                 //Inform server that night has been skipped, as threshold has been reached
-                Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.ITALIC + "[Jigglytatas Server] " + ChatColor.RESET + ""  + ChatColor.GOLD + "50% of players are now sleeping. Skipping night.");
+                Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.ITALIC + "[Jigglytatas Server] " + ChatColor.RESET + ""  + ChatColor.GOLD + "At least 50% of players are now sleeping. Skipping night.");
 
                 //Set time to 450 ticks (Minecraft Sunrise)
                 world.setTime(450);
