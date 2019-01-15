@@ -43,7 +43,7 @@ public class JigglytatasListener implements Listener
         World world = player.getWorld();
 
         Bukkit.getLogger().info(player.getName() + " has died at: " + xPos + " " + yPos + " " + zPos + " in dimension: " + world.getName());
-        player.sendMessage(ChatColor.RED + "Death Position: " + ChatColor.BLUE + xPos + " " + yPos + " " + zPos + " in dimension: " + world.getName());
+        sendJigglyMessageToPlayer(player, "Death Position: " + xPos + " " + yPos + " " + zPos + " in dimension: " + world.getName(), false);
     }
 
 
