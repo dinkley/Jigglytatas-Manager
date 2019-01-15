@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import static org.bukkit.event.player.PlayerBedEnterEvent.BedEnterResult.*;
 
@@ -124,5 +125,11 @@ public class JigglytatasListener implements Listener
         return sleepingPlayers++;
     }
 
+    @EventHandler
+    public void onJoin(PlayerJoinEvent event)
+    {
+        Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.ITALIC  +
+                "[Jigglytatas Server] " + ChatColor.RESET + "" + ChatColor.RED + "Corrupted chunks detected near player " + event.getPlayer().getDisplayName() + " Regenerating chunks.");
+    }
 
 }
