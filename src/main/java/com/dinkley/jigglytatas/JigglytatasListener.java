@@ -61,13 +61,11 @@ public class JigglytatasListener implements Listener
 
         if (isNight && bedEnterResult == OK)
         {
-            Bukkit.getLogger().info(player.getName() + " attempted to sleep, it is night and the game accepted the attempt so we are moving on.");
             //Inform server of player sleeping, and their percentage
             Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.ITALIC + "[Jigglytatas Server] " + ChatColor.RESET + "" + ChatColor.GOLD + player.getDisplayName() + " is sleeping. [" + sleepingPlayers + "/" + totalPlayers + "]");
 
             if (sleepingPlayers >= halfPlayers)
             {
-                Bukkit.getLogger().info("The player threshold has been reached. Sleeping players: " + sleepingPlayers + " Required players: " + halfPlayers);
 
                 //Inform server that night has been skipped, as threshold has been reached
                 Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.ITALIC + "[Jigglytatas Server] " + ChatColor.RESET + ""  + ChatColor.GOLD + "50% of players are now sleeping. Skipping night.");
@@ -123,13 +121,6 @@ public class JigglytatasListener implements Listener
             }
         }
         return sleepingPlayers++;
-    }
-
-    @EventHandler
-    public void onJoin(PlayerJoinEvent event)
-    {
-        Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.ITALIC  +
-                "[Jigglytatas Server] " + ChatColor.RESET + "" + ChatColor.RED + "Corrupted chunks detected near player " + event.getPlayer().getDisplayName() + " Regenerating chunks.");
     }
 
 }
