@@ -70,10 +70,12 @@ public class JigglytatasListener implements Listener
         Player player = event.getEntity().getPlayer();
         PlayerInventory playerInventory = player.getInventory();
 
+        /*
         for(ItemStack itemStack : playerInventory )
         {
             //TODO: Add items to array
         }
+        */
 
         //Round down coordinates to the nearest full number, to prevent
         //Insane decimal values like 103.219237891273897
