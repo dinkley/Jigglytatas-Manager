@@ -34,27 +34,6 @@ public class JigglytatasListener implements Listener
                 " Reminder: Felix is Gay");
     }
 
-    /*
-    @EventHandler
-    public void loginEvent(PlayerLoginEvent event)
-    {
-        Player player = event.getPlayer();
-
-        switch(event.getResult())
-        {
-            case ALLOWED:
-                event.allow();
-            case KICK_FULL: sendJigglyMessageToServer(player.getDisplayName() + " attempted to join, but the server is full.");
-                            event.disallow(PlayerLoginEvent.Result.KICK_FULL, "The server is full.");
-            case KICK_BANNED: sendJigglyMessageToServer("Banned player " + player.getDisplayName() + " attempted to join.");
-                            event.disallow(PlayerLoginEvent.Result.KICK_BANNED, "You are banned from the server.");
-            case KICK_WHITELIST: sendJigglyMessageToServer("Non-whitelisted player " +  player.getDisplayName() + " attempted to join.");
-                            event.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, "You are not whitelisted on this server.");
-            case KICK_OTHER: sendJigglyMessageToServer(player.getDisplayName() + " attempted to join, but was denied.");
-                            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "You couldn't join, and the server has no idea why.");
-        }
-    }
-    */
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event)
     {
