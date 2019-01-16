@@ -2,33 +2,84 @@ package com.dinkley.jigglytatas;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerBedEnterEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import static org.bukkit.event.player.PlayerBedEnterEvent.BedEnterResult.*;
 
 public class JigglytatasListener implements Listener
 {
+
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event)
     {
+        Player player = event.getPlayer();
+
+        event.setJoinMessage(null);
+        sendJigglyMessageToServer(player.getDisplayName() + " has joined the server.");
+
         event.getPlayer().sendMessage(ChatColor.LIGHT_PURPLE +
                 "[Jigglytatas Server]" + ChatColor.BLUE +
                 " Welcome to the Server!");
         event.getPlayer().sendMessage(ChatColor.LIGHT_PURPLE +
-                "[Jigglytatas Server]" + ChatColor.GOLD +
-                " keepInventory is currently " + ChatColor.BOLD +
-                "OFF");
-        event.getPlayer().sendMessage(ChatColor.LIGHT_PURPLE +
                 "[Jigglytatas Server]" + ChatColor.BLUE +
                 " Reminder: Felix is Gay");
     }
+
+    /*
+    @EventHandler
+    public void loginEvent(PlayerLoginEvent event)
+    {
+        Player player = event.getPlayer();
+
+        switch(event.getResult())
+        {
+            case ALLOWED:
+                event.allow();
+            case KICK_FULL: sendJigglyMessageToServer(player.getDisplayName() + " attempted to join, but the server is full.");
+                            event.disallow(PlayerLoginEvent.Result.KICK_FULL, "The server is full.");
+            case KICK_BANNED: sendJigglyMessageToServer("Banned player " + player.getDisplayName() + " attempted to join.");
+                            event.disallow(PlayerLoginEvent.Result.KICK_BANNED, "You are banned from the server.");
+            case KICK_WHITELIST: sendJigglyMessageToServer("Non-whitelisted player " +  player.getDisplayName() + " attempted to join.");
+                            event.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, "You are not whitelisted on this server.");
+            case KICK_OTHER: sendJigglyMessageToServer(player.getDisplayName() + " attempted to join, but was denied.");
+                            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "You couldn't join, and the server has no idea why.");
+        }
+    }
+    */
+    @EventHandler
+    public void onPlayerLeave(PlayerQuitEvent event)
+    {
+        Player player = event.getPlayer();
+
+        event.setQuitMessage(null);
+        sendJigglyMessageToServer(player.getDisplayName() + " has left the server.");
+    }
+
+    @EventHandler
+    public void onPlayerKick(PlayerKickEvent event)
+    {
+        Player player = event.getPlayer();
+
+        event.setLeaveMessage(null);
+        if (event.getReason() != null)
+        {
+            sendJigglyMessageToServer(player.getDisplayName() + " has been kicked from the server. Reason: " + event.getReason());
+        }
+        else
+        {
+            sendJigglyMessageToServer(player.getDisplayName() + " has been kicked from the server.");
+        }
+    }
+
 
     @EventHandler
     public void PlayerDeathEvent(PlayerDeathEvent event)
@@ -46,6 +97,25 @@ public class JigglytatasListener implements Listener
         sendJigglyMessageToPlayer(player, "Death Position: " + xPos + " " + yPos + " " + zPos + " in dimension: " + world.getName(), false);
     }
 
+
+    @EventHandler
+    public void mobDeath(EntityDeathEvent event)
+    {
+        Entity entity = event.getEntity();
+        if(entity.getType().toString() == "ENDER_DRAGON")
+        {
+            sendJigglyMessageToServer(((LivingEntity) entity).getKiller().getDisplayName() + " has defeated the Ender Dragon.");
+        }
+        if(entity.getType().toString() == "WITHER")
+        {
+            sendJigglyMessageToServer(((LivingEntity) entity).getKiller().getDisplayName() + " has defeated the Wither.");
+        }
+        else
+        {
+            return;
+        }
+
+    }
 
     @EventHandler
     public void onSleep(PlayerBedEnterEvent event)
@@ -106,6 +176,14 @@ public class JigglytatasListener implements Listener
             player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.ITALIC  +
                     "[Jigglytatas Server] " + ChatColor.RESET + "" + ChatColor.GOLD + message);
         }
+
+    }
+
+    public void sendJigglyMessageToServer(String message)
+    {
+        Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.ITALIC  +
+                "[Jigglytatas Server] " + ChatColor.RESET + "" + ChatColor.GOLD + message);
+
 
     }
 

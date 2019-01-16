@@ -14,6 +14,7 @@ public final class JigglytatasManager extends JavaPlugin
 
         // Initialize listener
         getServer().getPluginManager().registerEvents(new JigglytatasListener(), this);
+
     }
 
     @Override
