@@ -1,8 +1,10 @@
 package com.dinkley.jigglytatas;
+import com.sun.xml.internal.bind.v2.TODO;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -11,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 
@@ -67,7 +70,10 @@ public class JigglytatasListener implements Listener
         Player player = event.getEntity().getPlayer();
         PlayerInventory playerInventory = player.getInventory();
 
-        Bukkit.getLogger().info(playerInventory.toString());
+        for(ItemStack itemStack : playerInventory )
+        {
+            //TODO: Add items to array
+        }
 
         //Round down coordinates to the nearest full number, to prevent
         //Insane decimal values like 103.219237891273897
