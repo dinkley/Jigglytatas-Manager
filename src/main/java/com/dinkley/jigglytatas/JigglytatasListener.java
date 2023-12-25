@@ -33,9 +33,6 @@ public class JigglytatasListener implements Listener
         event.getPlayer().sendMessage(ChatColor.LIGHT_PURPLE +
                 "[Jigglytatas]" + ChatColor.BLUE +
                 " Welcome to the Server!");
-        event.getPlayer().sendMessage(ChatColor.LIGHT_PURPLE +
-                "[Jigglytatas]" + ChatColor.BLUE +
-                " Reminder: Felix is Gay");
     }
 
     @EventHandler
